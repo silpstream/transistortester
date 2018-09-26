@@ -55,7 +55,7 @@ CFLAGS += -DNO_ICONS_DEMO
 # WITH_ROTARY_COUNT to 5 for getting the best resolution.
 # You can also use two separate push-buttons for Up and Down instead ot the rotary encoder.
 # You must set the WITH_ROTARY_SWITCH to 4 for the UP/DOWN push-buttons.
-CFLAGS += -DWITH_ROTARY_SWITCH=2
+CFLAGS += -DWITH_ROTARY_SWITCH=3
 # the option CHANGE_ROTARY_DIRECTION changes the rotary direction by swap of switches
 #CFLAGS += -DCHANGE_ROTARY_DIRECTION
 # The best solution for connecting the rotary switch is PD1 and PD3, because this setting can be used
@@ -83,7 +83,7 @@ UI_LANGUAGE = LANG_ENGLISH
 CFLAGS += -DFOUR_LINE_LCD
 #CFLAGS += -DLCD_LINE_LENGTH=20
 
-# Some character display types have a different DD_RAM start adress for line 1. 
+# Some character display types have a different DD_RAM start adress for line 1.
 # Usually the DD_RAM start address for line 1 is 0.
 # You can specify a different start address with the option DD_RAM_OFFSET
 #DD_RAM_OFFSET=128
@@ -91,7 +91,7 @@ CFLAGS += -DFOUR_LINE_LCD
 # The PAGE_MODE activates a moving line cursor for menu function selection together with FOUR_LINE_LCD
 # and WITH_ROTARY_SWITCH.
 # Without the PAGE_MODE option, the line cursor is fixed to line 3 and the text moves.
-#CFLAGS += -DPAGE_MODE
+CFLAGS += -DPAGE_MODE
 
 
 # The LCD_ST7565 option must be set to support a 128x64 LCD graphics display
@@ -103,12 +103,12 @@ WITH_LCD_ST7565 = 7735
 #WITH_LCD_ST7565 = 1306
 
 # Normally the ST7565 controller is connected with a SPI 4-wire interface, but
-# you can enable a I2C interface with address 0x3c for the SSD1306 controller 
+# you can enable a I2C interface with address 0x3c for the SSD1306 controller
 # by setting the LCD_INTERFACE_MODE to 2.
 # The SCL signal is available at PD5 (LCD-E, LCD-6), the SDA signal at PD2 (LCD-D6, LCD-13).
 # A pull up resistor of about 4.7k is required for both signals to 3.3V.
 # Please check, if your display module can also tolerate a 5V signal level.
-# For the ST7920 controller you can select the serial interface by setting the LCD_INTERFACE_MODE to 5 . 
+# For the ST7920 controller you can select the serial interface by setting the LCD_INTERFACE_MODE to 5 .
 # ST7920-RW <--> PD2 , ST7920-E <--> PD5 , ST7920-PSB <--> GND , ST7920-RS <--> VCC , ST7920-RST <--> VCC
 # For the PDF8814 controller you can also select a 3 for the 3-line serial interface with RS (D/C) as first bit.
 # The RS (data/command) signal at PD1 is used as chip enable SCE.
@@ -131,7 +131,7 @@ LCD_ST7565_RESISTOR_RATIO = 4
 
 # The option LCD_SCREEN_ROTATE exchange the horizontal and vertial axis.
 # This option is only possible, if horizontal/vertical exchange is supported by the controller.
-#CFLAGS += -DLCD_SCREEN_ROTATE=1
+CFLAGS += -DLCD_SCREEN_ROTATE=1
 # If LCD_ST7565 option is set to 1: Flip the display's horizontal direction.
 CFLAGS += -DLCD_ST7565_H_FLIP=0
 # With LCD_ST7565_H_OFFSET you can specify a horizontal pixel offset to the display window.
@@ -139,7 +139,7 @@ CFLAGS += -DLCD_ST7565_H_FLIP=0
 # OFFSET values can vary for the connected display type to 0, 2 or 4.
 CFLAGS += -DLCD_ST7565_H_OFFSET=0
 # If LCD_ST7565 option is set to 1: Flip the display's vertical direction
-CFLAGS += -DLCD_ST7565_V_FLIP=0
+CFLAGS += -DLCD_ST7565_V_FLIP=1
 # The contrast value can be predefined with the constant VOLUME_VALUE
 # for ST7565 controller the value can be between 0 and 63, for the SSD1306 0 to 255 can be selected.
 #CFLAGS += -DVOLUME_VALUE=25
@@ -164,9 +164,9 @@ CFLAGS += -DLCD_FG_COLOR=0xffff
 #CFLAGS += -DFONT_6X8
 #CFLAGS += -DFONT_8X8
 #CFLAGS += -DFONT_7X12
-CFLAGS += -DFONT_8X12thin
+#CFLAGS += -DFONT_8X12thin
 #CFLAGS += -DFONT_8X14
-#CFLAGS += -DFONT_8X15
+CFLAGS += -DFONT_8X15
 #CFLAGS += -DFONT_8X16
 #CFLAGS += -DFONT_8X16thin
 
@@ -174,10 +174,10 @@ CFLAGS += -DFONT_8X12thin
 # you can select a special type with setting the ICON_TYPE.
 # Currently you can select 1 or 3 for one of two thin layouts for the icons.
 # You can also select two thick layouts for the icons by setting the ICON_TYPE to 2 or 0 (0=old style).
-CFLAGS += -DICON_TYPE=3
+CFLAGS += -DICON_TYPE=2
 
 # option BIG_TP makes the 123 for the test pins (beside the icon) bigger
-CFLAGS += -DBIG_TP
+#CFLAGS += -DBIG_TP
 # option INVERSE_TP inverse the 123 for the test pins (black on white)
 # the option INVERSE_TP disable the option BIG_TP because a frame is required
 #CFLAGS += -DINVERSE_TP
@@ -203,7 +203,7 @@ CFLAGS += -DWITH_SELFTEST
 
 # AUTO_CAL will enable the autocalibration of zero offset of capacity measurement and
 # also the port output resistance values will be find out in SELFTEST section.
-# With a external capacitor a additionally correction of reference voltage is figured out for 
+# With a external capacitor a additionally correction of reference voltage is figured out for
 # low capacity measurement and also for the AUTOSCALE_ADC measurement.
 # The AUTO_CAL option is only selectable for mega168 and mega328.
 CFLAGS += -DAUTO_CAL
@@ -221,7 +221,7 @@ WITH_SamplingADC = 1
 
 # Option WITH_XTAL enables additional Xtal / Ceramic resonator tests.
 # Option can be set only together with SamplingADC=1 and OP_MHZ=16
-#CFLAGS += -DWITH_XTAL 
+#CFLAGS += -DWITH_XTAL
 # Option WITH_UJT enables additional tests for UJT (UniJunction Transistor)
 #CFLAGS += -DWITH_UJT
 # Option WITH_PUT enables additional tests for PUT (Programmable Unijunction Transistor)
@@ -245,7 +245,7 @@ CFLAGS += -DC_H_KORR=0
 # You can set WITH_UART to 2 to enable a special mode of serial output with line number in column 1.
 # If the option is deselected, PC3 can be used as external voltage input with a
 # 10:1 resistor divider.
-CFLAGS += -DWITH_UART
+#CFLAGS += -DWITH_UART
 
 # With option TQFP_ADC6 or/and TQFP_ADC7 you can use the additional pins of the TQFP or
 # the QFN package for external analog input. You should install a 10:1 voltage dividers
@@ -258,7 +258,7 @@ CFLAGS += -DWITH_UART
 # is not used for serial output (WITH_UART option).
 # For ATmega644/1284 processor the UART has a separate pin.  Therefore the external input
 # at pin ADC3 can be enabled separate by setting the WITH_UART option.
-#CFLAGS += -DWITH_VEXT
+CFLAGS += -DWITH_VEXT
 
 #
 # If you want to measure Inductors with the resistance meter, you must specify
@@ -282,10 +282,10 @@ CFLAGS += -DESR_ZERO=20
 # NO_AREF_CAP tells your Software, that you have no Capacitor installed at pin AREF (21).
 # This enables a shorter wait-time for AUTOSCALE_ADC function.
 # A capacitor with 1nF can be used with the option NO_AREF_CAP set.
-CFLAGS += -DNO_AREF_CAP
+#CFLAGS += -DNO_AREF_CAP
 
 # The OP_MHZ option tells the software the Operating Frequency of your ATmega.
-OP_MHZ = 8
+OP_MHZ = 16
 
 # Restart from sleep mode will be delayed for 16384 clock tics with crystal mode.
 # Operation with the internal RC-Generator or external clock will delay the restart by only 6 clock tics.
@@ -297,7 +297,7 @@ OP_MHZ = 8
 CFLAGS += -DUSE_EEPROM
 
 # Setting EBC_STYPE will select the old style to present the order of Transistor connection (EBC=...).
-# Omitting the option will select the 123=... style.  Every point is replaced by a character identifying 
+# Omitting the option will select the 123=... style.  Every point is replaced by a character identifying
 # type of connected transistor pin (B=Base, E=Emitter, C=Collector, G=Gate, S=Source, D=Drain).
 # If you select EBC_STYLE=321 , the style will be 321=... , the inverted order to the 123=... style.
 #CFLAGS += -DEBC_STYLE
@@ -356,7 +356,7 @@ CFLAGS += -DBAT_OUT=150
 CFLAGS += -DBAT_POOR=6400
 
 # You can set a upper battery voltage limit in mV units for battery operation mode.
-# The operation time of additional functions is limited with the battery operation mode. 
+# The operation time of additional functions is limited with the battery operation mode.
 # Above the voltage limit "DC_PWR" the tester changes the operation mode to the
 # "DC_Pwr_Mode", where time limits of the additional functions are switched off.
 # The "DC_Pwr_Mode" is also started, if the battery voltage is detected below 0.9V
@@ -377,13 +377,13 @@ INHIBIT_SLEEP_MODE = 0
 
 # Select your programmer type, speed and port, if you wish to use avrdude.
 # setting for DIAMEX ALL_AVR, Atmel AVRISP-mkII
-PROGRAMMER=avrispmkII
-BitClock=1.0
-PORT=usb
-# setting for USBasp
-#PROGRAMMER=usbasp
-#BitClock=20
+#PROGRAMMER=avrispmkII
+#BitClock=1.0
 #PORT=usb
+# setting for USBasp
+PROGRAMMER=usbasp
+BitClock=20
+PORT=usb
 # setting for ARDUINO MEGA, requires bootloader
 #PROGRAMMER=wiring
 #PORT = /dev/ttyACM0
@@ -393,7 +393,7 @@ PORT=usb
 
 include ../setup.mk
 
-########### Compile only Assembler source available 
+########### Compile only Assembler source available
 lcd_hw_4_bit.o: ../lcd_hw_4_bit.S $(MKFILES)
 	$(CC) $(INCLUDES) $(CFLAGS) -c  $<
 
@@ -403,7 +403,7 @@ wait1000ms.o: ../wait1000ms.S $(MKFILES)
 swuart.o: ../swuart.S $(MKFILES)
 	$(CC) $(INCLUDES) $(CFLAGS) -c  $<
 
-########### Compile  Assembler source only, is time critical 
+########### Compile  Assembler source only, is time critical
 GetESR.o: ../GetESR.S $(MKFILES)
 	$(CC) $(INCLUDES) $(CFLAGS) -c  $<
 
